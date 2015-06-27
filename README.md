@@ -75,7 +75,108 @@ Unless otherwise noted, the single test case run was parameterized using the
 ---------------------------------------------------------------------------
 6.1 The directory structure is shown below:
 
- TODO
+?   pom.xml
+?   README.md
+?
+????src
+    ????docs
+    ?   ?   allclasses-frame.html
+    ?   ?   allclasses-noframe.html
+    ?   ?   constant-values.html
+    ?   ?   deprecated-list.html
+    ?   ?   help-doc.html
+    ?   ?   index.html
+    ?   ?   overview-frame.html
+    ?   ?   overview-summary.html
+    ?   ?   overview-tree.html
+    ?   ?   package-list
+    ?   ?   script.js
+    ?   ?   stylesheet.css
+    ?   ?
+    ?   ????com
+    ?   ?   ????hellosign
+    ?   ?       ????test
+    ?   ?           ????pages
+    ?   ?           ?       LandingPage.html
+    ?   ?           ?       LoginPage.html
+    ?   ?           ?       package-frame.html
+    ?   ?           ?       package-summary.html
+    ?   ?           ?       package-tree.html
+    ?   ?           ?
+    ?   ?           ????testng
+    ?   ?           ?       LoginDataProvider.html
+    ?   ?           ?       LoginTest.html
+    ?   ?           ?       package-frame.html
+    ?   ?           ?       package-summary.html
+    ?   ?           ?       package-tree.html
+    ?   ?           ?
+    ?   ?           ????utils
+    ?   ?           ?       Consts.html
+    ?   ?           ?       package-frame.html
+    ?   ?           ?       package-summary.html
+    ?   ?           ?       package-tree.html
+    ?   ?           ?       Utils.html
+    ?   ?           ?
+    ?   ?           ????webtestsbase
+    ?   ?                   BasePage.html
+    ?   ?                   Browser.html
+    ?   ?                   package-frame.html
+    ?   ?                   package-summary.html
+    ?   ?                   package-tree.html
+    ?   ?                   WebDriverFactory.html
+    ?   ?
+    ?   ????index-files
+    ?           index-1.html
+    ?           index-10.html
+    ?           index-11.html
+    ?           index-12.html
+    ?           index-13.html
+    ?           index-14.html
+    ?           index-15.html
+    ?           index-16.html
+    ?           index-17.html
+    ?           index-18.html
+    ?           index-19.html
+    ?           index-2.html
+    ?           index-20.html
+    ?           index-3.html
+    ?           index-4.html
+    ?           index-5.html
+    ?           index-6.html
+    ?           index-7.html
+    ?           index-8.html
+    ?           index-9.html
+    ?
+    ????main
+    ?   ????java
+    ?   ?   ????com
+    ?   ?       ????hellosign
+    ?   ?           ????test
+    ?   ?               ????utils
+    ?   ?               ?       Consts.java
+    ?   ?               ?       Utils.java
+    ?   ?               ?
+    ?   ?               ????webtestsbase
+    ?   ?                       BasePage.java
+    ?   ?                       Browser.java
+    ?   ?                       WebDriverFactory.java
+    ?   ?
+    ?   ????resources
+    ?           resources.properties
+    ?           testng.xml
+    ?
+    ????test
+        ????java
+            ????com
+                ????hellosign
+                    ????test
+                        ????pages
+                        ?       LandingPage.java
+                        ?       LoginPage.java
+                        ?
+                        ????testng
+                                LoginDataProvider.java
+                                LoginTest.java
 
 
 6.2 Please note that the directory structure is important, and file/directory
