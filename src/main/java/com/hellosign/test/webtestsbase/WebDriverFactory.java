@@ -25,7 +25,7 @@ public class WebDriverFactory {
     /**
      * The constant driver.
      */
-    private static WebDriver driver;
+    private volatile static WebDriver driver;
 
     /**
      * Getting of pre-configured {@link WebDriver} instance.
