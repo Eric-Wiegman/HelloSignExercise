@@ -3,7 +3,7 @@ package com.hellosign.test.webtestsbase;
 /**
  * Created by Sidelnikov Mikhail on 17.09.14.
  * This class represents browsers. For add support of your browser - add it to this enum
- *  <p/>
+ *  <br>
  * Modified by Eric Wiegman on 26.06.15.
  * Minor changes in javadoc only
  */

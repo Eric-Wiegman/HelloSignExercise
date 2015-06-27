@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * Base class for web tests. It contains web driver {@link WebDriver} instance,
  * used in all tests. All communications with driver should be done through
  * this class
- * <p/>
+ * <br>
  * Modified by Eric Wiegman on 26.06.15.
  * Major changes in startBrowser() method
  */
