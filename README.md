@@ -52,20 +52,20 @@ This is the README.md file for the 'HelloSign Exercise' presented to Eric
 4. The following is a general outline of what was automated for TEST Scenario 1:
 ---------------------------------------------------------------------------
 1. Go to www.hellosign.com
-1. click on <"LOG IN"> in the upper right
-1. enter <"notanemail"> in the email address field 
-1. enter <"notapassword"> in the password field
-1. click <"SIGN IN">
+1. click on `"LOG IN"` in the upper right
+1. enter `"notanemail"` in the email address field 
+1. enter `"notapassword"` in the password field
+1. click `"SIGN IN"`
 1. verify that the following error is displayed:
     _"Invalid email address"_
 
 5. The following is a general outline of what was automated for TEST Scenario 2:
 ---------------------------------------------------------------------------
 1. Go to www.hellosign.com
-1. click on <"LOG IN"> in the upper right
-1. enter <"email@example.com"> in the email address field 
-1. enter <"wrongpass"> in the password field
-1. click <"SIGN IN">
+1. click on `"LOG IN"` in the upper right
+1. enter `"email@example.com"` in the email address field 
+1. enter `"wrongpass"` in the password field
+1. click `"SIGN IN"`
 1. verify that the following error is displayed:
     _"Invalid username/password combo."_
 
