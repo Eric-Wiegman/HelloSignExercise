@@ -339,3 +339,4 @@ crashlytics-build.properties
 # EXE files, needed for automation of Chrome browser
 src/main/resources/chromedriver_mac32/chromedriver
 src/main/resources/chromedriver_win32/chromedriver.exe
+src/main/resources/chromedriver_linux32/chromedriver

@@ -32,56 +32,19 @@ public class Utils {
 
         String os = System.getProperty("os.name").toLowerCase();
 
-        if (isWindows()) {
+        if (os.contains("win")) {
             os = "windows";
-        } else if (isMac()) {
+        } else if ( os.contains("mac")) {
             os = "mac";
-        } else if (isUnix()) {
+        } else if ( os.contains("nix")) {
             os = "nix";
-        } else if (isSolaris()) {
+        } else if (os.contains("solaris")) {
             os = "solaris";
         } else {
             throw new AssertionError("Your OS is not supported");
         }
 
         return os;
-    }
-
-    /**
-     * Returns true if the OS is windows.
-     *
-     * @return the boolean
-     */
-    private static boolean isWindows() {
-        return (getOS().contains("win"));
-    }
-
-    /**
-     * Returns true if the OS is mac.
-     *
-     * @return the boolean
-     */
-    private static boolean isMac() {
-        return (getOS().contains("mac"));
-    }
-
-    /**
-     * Returns true if the OS is unix.
-     *
-     * @return the boolean
-     */
-    private static boolean isUnix() {
-        return (getOS().contains("nix") || getOS().contains("nux") || getOS
-                ().contains("aix"));
-    }
-
-    /**
-     * Returns true if the OS is solaris.
-     *
-     * @return the boolean
-     */
-    private static boolean isSolaris() {
-        return (getOS().contains("sunos"));
     }
 
     /**
@@ -215,8 +178,9 @@ public class Utils {
                 driverFolder = "chromedriver_mac32";
                 break;
             case "nix":
-                throw new AssertionError("Supported by Google, but not yet implemented " +
-                        "in Automation Framework");
+                //note: only supporting 32-bit Linux for now
+                driverFolder = "chromedriver_linux32";
+                break;
             case "solaris":
                 throw new AssertionError("Solaris is not supported for " +
                         "ChromeDriver Executable");
@@ -232,6 +196,7 @@ public class Utils {
                         chromedriverExeLocation +
                         getFilePathSeparator() +
                         driverFolder +
+                        getFilePathSeparator() +
                         driverExe);
     }
 
@@ -243,7 +208,7 @@ public class Utils {
     private String getFilePathSeparator() {
         String separator = Consts.SLASH;
 
-        if (isWindows()) {
+        if (getOS().equals("windows")) {
             separator = Consts.BACKSLASH;
         } else {
             //all else uses the (already initialized) default forward slash
