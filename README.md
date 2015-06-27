@@ -48,6 +48,13 @@ This is the README.md file for the 'HelloSign Exercise' presented to Eric
 5. The PageFactory pattern is used.
 6. This file contains instructions on how to run the test from command line.
 
+NOTE: With the versions I am using, there is Firefox support up to 35, support 
+for native events up to 34. For Chrome, assuming using the ChromeDriver 
+Executable v. 2.15, then support is only through version 43.0 of Chrome browser.
+
+As of the current date, Chrome browser's latest stable version is 43.0.2357.130
+(Platform version: 6946.63.0) and the latest version of the Firefox browser is 
+38.0.6.
 
 4. The following is a general outline of what was automated for TEST Scenario 1:
 ---------------------------------------------------------------------------
