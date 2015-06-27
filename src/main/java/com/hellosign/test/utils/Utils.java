@@ -23,6 +23,11 @@ public class Utils {
         }
     }
 
+    /**
+     * Gets the Operating System name.
+     *
+     * @return the OS Name
+     */
     private static String getOS() {
 
         String os = System.getProperty("os.name").toLowerCase();
@@ -42,19 +47,39 @@ public class Utils {
         return os;
     }
 
+    /**
+     * Returns true if the OS is windows.
+     *
+     * @return the boolean
+     */
     private static boolean isWindows() {
         return (getOS().contains("win"));
     }
 
+    /**
+     * Returns true if the OS is mac.
+     *
+     * @return the boolean
+     */
     private static boolean isMac() {
         return (getOS().contains("mac"));
     }
 
+    /**
+     * Returns true if the OS is unix.
+     *
+     * @return the boolean
+     */
     private static boolean isUnix() {
         return (getOS().contains("nix") || getOS().contains("nux") || getOS
                 ().contains("aix"));
     }
 
+    /**
+     * Returns true if the OS is solaris.
+     *
+     * @return the boolean
+     */
     private static boolean isSolaris() {
         return (getOS().contains("sunos"));
     }
@@ -129,7 +154,7 @@ public class Utils {
      * Gets string value from the property file.
      *
      * @param propFileName the property file name
-     * @param propString   the property string
+     * @param propString the property string
      * @return the value from property file
      * @throws IOException an I/O exception
      */
@@ -171,6 +196,9 @@ public class Utils {
         return props;
     }
 
+    /**
+     * Sets chromeDriver property.
+     */
     public void setChromeDriverProperty() {
 
         String driverFolder;
@@ -207,6 +235,11 @@ public class Utils {
                         driverExe);
     }
 
+    /**
+     * Gets file path separator.
+     *
+     * @return the file path separator
+     */
     private String getFilePathSeparator() {
         String separator = Consts.SLASH;
 

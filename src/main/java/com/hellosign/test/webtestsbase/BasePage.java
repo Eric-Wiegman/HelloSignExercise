@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Sidelnikov Mikhail on 19.09.14.
  * This is the main class for pages. When you create your page - you must extend your class from this
+ *  <p/>
+ * Modified by Eric Wiegman on 26.06.15.
+ * Minor changes in package reference only
  */
 public abstract class BasePage {
     /**

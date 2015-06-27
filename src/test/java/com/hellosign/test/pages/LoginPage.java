@@ -91,7 +91,7 @@ public class LoginPage extends BasePage {
     /**
      * Login method.
      *
-     * @param email    the username (email, actually) used when logging in
+     * @param email the username (email, actually) used when logging in
      * @param password the password used when logging in
      * @return the string
      */

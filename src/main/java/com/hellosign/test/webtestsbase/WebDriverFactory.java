@@ -16,9 +16,14 @@ import java.util.concurrent.TimeUnit;
  * this class
  * <p/>
  * Modified by Eric Wiegman on 26.06.15.
+ * Major changes in startBrowser() method
  */
 public class WebDriverFactory {
 
+    /**
+     * The constant utils, which is an instantiation of the generic Utility
+     * class.
+     */
     private static final Utils utils = new Utils();
 
     /**
@@ -33,7 +38,7 @@ public class WebDriverFactory {
     /**
      * Getting of pre-configured {@link WebDriver} instance.
      * Please use this method only after calling {@link #startBrowser()
-     * startBrowser}* method
+     * startBrowser}** method
      *
      * @return webdriver object, or throw IllegalStateException, if driver has not been initialized
      */

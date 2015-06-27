@@ -3,22 +3,25 @@ package com.hellosign.test.webtestsbase;
 /**
  * Created by Sidelnikov Mikhail on 17.09.14.
  * This class represents browsers. For add support of your browser - add it to this enum
+ *  <p/>
+ * Modified by Eric Wiegman on 26.06.15.
+ * Minor changes in javadoc only
  */
 public enum Browser {
     /**
-     * The FIREFOX.
+     * Enumerates the FIREFOX browser.
      */
     FIREFOX("firefox"),
     /**
-     * The CHROME.
+     * Enumerates the CHROME browser.
      */
     CHROME("chrome"),
     /**
-     * The IE10.
+     * Enumerates the IE10 (Internet Explorer 10) browser.
      */
     IE10("ie10"),
     /**
-     * The SAFARI.
+     * Enumerates the SAFARI browser.
      */
     SAFARI("safari");
     /**
