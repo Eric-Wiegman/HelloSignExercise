@@ -26,37 +26,37 @@ public class LoginPage extends BasePage {
     /**
      * The Button that allows you to sign in with Google credentials.
      */
-    @FindBy(className= "m-login--modal-google-login")
+    @FindBy(className = "m-login--modal-google-login")
     private WebElement btnSignInWithGoogle;
 
     /**
      * The login page's email textField.
      */
-    @FindBy(id="login_email_address_input")
+    @FindBy(id = "login_email_address_input")
     private WebElement tfLoginEmail;
 
     /**
      * The login page's password textField..
      */
-    @FindBy(id="login_password_input")
+    @FindBy(id = "login_password_input")
     private WebElement tfLoginPassword;
 
     /**
      * The Link you click if you forgot your password.
      */
-    @FindBy(className="m-login--forgot-pwd-link")
+    @FindBy(className = "m-login--forgot-pwd-link")
     private WebElement linkForgotPassword;
 
     /**
      * The Button to log you in.
      */
-    @FindBy(className="m-login--modal-google-login-button")
-	private WebElement btnLogin;
+    @FindBy(className = "m-login--modal-google-login-button")
+    private WebElement btnLogin;
 
     /**
      * The Inline error text.
      */
-    @FindBy(className=INLINE_ERR_CLASSNAME )
+    @FindBy(className = INLINE_ERR_CLASSNAME)
     private WebElement inlineErrorText;
 
     /**
@@ -83,7 +83,7 @@ public class LoginPage extends BasePage {
     public boolean isPageOpened() {
         try {
             return btnLogin.isDisplayed();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return false;
         }
     }
@@ -91,11 +91,11 @@ public class LoginPage extends BasePage {
     /**
      * Login method.
      *
-     * @param email the username (email, actually) used when logging in
+     * @param email    the username (email, actually) used when logging in
      * @param password the password used when logging in
      * @return the string
      */
-    public String login (String email, String password) {
+    public String login(String email, String password) {
 
         String errMsg = "No error message reported";
 

@@ -21,8 +21,8 @@ public class LandingPage extends BasePage {
     /**
      * The Login link.
      */
-    @FindBy(className ="m-link-list--log-in")
-	private WebElement loginLink;
+    @FindBy(className = "m-link-list--log-in")
+    private WebElement loginLink;
 
     /**
      * Instantiates a new HelloSign Landing page.
@@ -48,7 +48,7 @@ public class LandingPage extends BasePage {
     public boolean isPageOpened() {
         try {
             return loginLink.isDisplayed();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return false;
         }
     }
@@ -56,7 +56,7 @@ public class LandingPage extends BasePage {
     /**
      * Sign in.
      */
-    public void signIn () {
+    public void signIn() {
         loginLink.click();
     }
 

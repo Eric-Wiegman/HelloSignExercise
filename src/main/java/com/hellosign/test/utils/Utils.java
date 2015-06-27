@@ -12,6 +12,7 @@ public class Utils {
 
     /**
      * waiting for seconds
+     *
      * @param timeoutInSeconds timeout in seconds for wait
      */
     public static void waitForSeconds(int timeoutInSeconds) {
@@ -22,12 +23,48 @@ public class Utils {
         }
     }
 
+    private static String getOS() {
+
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (isWindows()) {
+            os = "windows";
+        } else if (isMac()) {
+            os = "mac";
+        } else if (isUnix()) {
+            os = "nix";
+        } else if (isSolaris()) {
+            os = "solaris";
+        } else {
+            throw new AssertionError("Your OS is not supported");
+        }
+
+        return os;
+    }
+
+    private static boolean isWindows() {
+        return (getOS().contains("win"));
+    }
+
+    private static boolean isMac() {
+        return (getOS().contains("mac"));
+    }
+
+    private static boolean isUnix() {
+        return (getOS().contains("nix") || getOS().contains("nux") || getOS
+                ().contains("aix"));
+    }
+
+    private static boolean isSolaris() {
+        return (getOS().contains("sunos"));
+    }
+
     /**
      * Gets browser value from property file.
      *
      * @return the browser value from property file
      */
-    public String getBrowserValueFromPropertyFile () {
+    public String getBrowserValueFromPropertyFile() {
 
         String defaultBrowser = "firefox";
         String browserValue = defaultBrowser;
@@ -47,12 +84,12 @@ public class Utils {
      *
      * @return the chrome driver executable path from property file
      */
-    public String getChromeDriverExePathFromPropertyFile () {
+    private String getChromeDriverExePathFromPropertyFile() {
 
         String chromedriverExeLocation = "unknown path";
 
         try {
-            chromedriverExeLocation  = getStringFromPropFile(
+            chromedriverExeLocation = getStringFromPropFile(
                     Consts.PROPERTY_FILE, "chromedriverExeLocation");
         } catch (IOException e) {
             /*
@@ -61,7 +98,7 @@ public class Utils {
             chromeDriver executable. Just fall back on FireFox default, if
             warranted.
             */
-            if ("chrome".equals( getBrowserValueFromPropertyFile ()
+            if ("chrome".equals(getBrowserValueFromPropertyFile()
                     .toLowerCase())) {
                 throw new AssertionError("Can't find the chromedriver " +
                         "Executable -- suggest changing the 'browser' config " +
@@ -92,11 +129,11 @@ public class Utils {
      * Gets string value from the property file.
      *
      * @param propFileName the property file name
-     * @param propString the property string
+     * @param propString   the property string
      * @return the value from property file
      * @throws IOException an I/O exception
      */
-    private String getStringFromPropFile (
+    private String getStringFromPropFile(
             String propFileName,
             String propString
     )
@@ -134,4 +171,51 @@ public class Utils {
         return props;
     }
 
+    public void setChromeDriverProperty() {
+
+        String driverFolder;
+        String driverExe = "chromedriver";
+
+        String chromedriverExeLocation = getChromeDriverExePathFromPropertyFile();
+
+        switch (Utils.getOS()) {
+            case "windows":
+                driverFolder = "chromedriver_win32";
+                driverExe = driverExe + ".exe";
+                break;
+            case "mac":
+                driverFolder = "chromedriver_mac32";
+                break;
+            case "nix":
+                throw new AssertionError("Supported by Google, but not yet implemented " +
+                        "in Automation Framework");
+            case "solaris":
+                throw new AssertionError("Solaris is not supported for " +
+                        "ChromeDriver Executable");
+            default:
+                throw new AssertionError("Your OS is not supported for " +
+                        "ChromeDriver Executable");
+        }
+
+        System.setProperty(
+                "webdriver.chrome.driver",
+                System.getProperty("user.dir") +
+                        getFilePathSeparator() +
+                        chromedriverExeLocation +
+                        getFilePathSeparator() +
+                        driverFolder +
+                        driverExe);
+    }
+
+    private String getFilePathSeparator() {
+        String separator = Consts.SLASH;
+
+        if (isWindows()) {
+            separator = Consts.BACKSLASH;
+        } else {
+            //all else uses the (already initialized) default forward slash
+        }
+
+        return separator;
+    }
 }

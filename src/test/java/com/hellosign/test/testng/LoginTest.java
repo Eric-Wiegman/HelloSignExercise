@@ -23,34 +23,35 @@ public class LoginTest {
 
     /**
      * Test login.
-     *<br><br>
-     *TEST 1:<br>
-     *Go to www.hellosign.com<br>
-     *click on "LOG IN" in the upper right<br>
-     *enter "notanemail" in the email address field<br>
-     *enter "notapassword" in the password field<br>
-     *click "SIGN IN".<br>
-     *You should verify that the following error is displayed: "Invalid email address"<br>
-     <br><br>
-     *TEST 2:<br>
-     *Go to www.hellosign.com<br>
-     *click on "LOG IN" in the upper right<br>
-     *enter "email@example.com" in the email address field<br>
-     *enter "wrongpass" in the password field<br>
-     *click "SIGN IN".<br>
-     *You should verify that the following error is displayed: "Invalid username/password combo."<br>
-     *<br>
-     * @param identifier the identifier for the specified data-driven scenario
-     * @param email the email used to log in
-     * @param password the password used to log in
+     * <br><br>
+     * TEST 1:<br>
+     * Go to www.hellosign.com<br>
+     * click on "LOG IN" in the upper right<br>
+     * enter "notanemail" in the email address field<br>
+     * enter "notapassword" in the password field<br>
+     * click "SIGN IN".<br>
+     * You should verify that the following error is displayed: "Invalid email address"<br>
+     * <br><br>
+     * TEST 2:<br>
+     * Go to www.hellosign.com<br>
+     * click on "LOG IN" in the upper right<br>
+     * enter "email@example.com" in the email address field<br>
+     * enter "wrongpass" in the password field<br>
+     * click "SIGN IN".<br>
+     * You should verify that the following error is displayed: "Invalid username/password combo."<br>
+     * <br>
+     *
+     * @param identifier         the identifier for the specified data-driven scenario
+     * @param email              the email used to log in
+     * @param password           the password used to log in
      * @param expectedErrMessage the expected error message
      */
-    @Test (dataProvider = "loginDataProvider", dataProviderClass = LoginDataProvider.class)
+    @Test(dataProvider = "loginDataProvider", dataProviderClass = LoginDataProvider.class)
     public void testLogin(
-          String identifier,
-          String email,
-          String password,
-          String expectedErrMessage) {
+            String identifier,
+            String email,
+            String password,
+            String expectedErrMessage) {
 
         LandingPage landingPage = new LandingPage();
         landingPage.signIn();

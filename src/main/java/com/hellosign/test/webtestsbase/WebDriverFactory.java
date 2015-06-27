@@ -14,10 +14,13 @@ import java.util.concurrent.TimeUnit;
  * Base class for web tests. It contains web driver {@link WebDriver} instance,
  * used in all tests. All communications with driver should be done through
  * this class
- *
+ * <p/>
  * Modified by Eric Wiegman on 26.06.15.
  */
 public class WebDriverFactory {
+
+    private static final Utils utils = new Utils();
+
     /**
      * The constant IMPLICIT_WAIT_TIMEOUT.
      */
@@ -57,10 +60,10 @@ public class WebDriverFactory {
      * Starts the browser for the test.
      */
     public static void startBrowser() {
-        Utils utils = new Utils();
+
 
         String sBrowser = utils.getBrowserValueFromPropertyFile();
-        String chromedriverExeLocation = utils.getChromeDriverExePathFromPropertyFile();
+
 
         Browser browser = Browser.valueOf(sBrowser.trim().toUpperCase());
 
@@ -70,9 +73,7 @@ public class WebDriverFactory {
                     driver = new FirefoxDriver();
                     break;
                 case CHROME:
-                    System.setProperty(
-                            "webdriver.chrome.driver",
-                            System.getProperty("user.dir") + chromedriverExeLocation);
+                    utils.setChromeDriverProperty();
                     driver = new ChromeDriver();
                     break;
                 case IE10:
