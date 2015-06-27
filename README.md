@@ -75,6 +75,7 @@ Unless otherwise noted, the single test case run was parameterized using the
 ---------------------------------------------------------------------------
 6.1 The directory structure is shown below:
 
+<pre>
 │   pom.xml
 │   README.md
 │
@@ -177,7 +178,7 @@ Unless otherwise noted, the single test case run was parameterized using the
                         └───testng
                                 LoginDataProvider.java
                                 LoginTest.java
-
+</pre>
 
 6.2 Please note that the directory structure is important, and file/directory
     changes should **not** be made. Failure to leave the structure as is will
