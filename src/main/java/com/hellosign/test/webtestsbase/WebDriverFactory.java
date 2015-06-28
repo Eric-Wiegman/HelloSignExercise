@@ -1,5 +1,6 @@
 package com.hellosign.test.webtestsbase;
 
+import com.hellosign.test.utils.Consts;
 import com.hellosign.test.utils.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -70,7 +71,17 @@ public class WebDriverFactory {
         String sBrowser = utils.getBrowserValueFromPropertyFile();
 
 
-        Browser browser = Browser.valueOf(sBrowser.trim().toUpperCase());
+        Browser browser = null;
+        try {
+            browser = Browser.valueOf(sBrowser.trim().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("The browser:" + Consts.SPACE +
+                    Consts.QUOTE + sBrowser + Consts.QUOTE  + Consts.SPACE +
+                    "specified in the property file"  + Consts.SPACE + Consts.QUOTE +
+                    Consts.PROPERTY_FILE + Consts.QUOTE + Consts.SPACE +"is " +
+                    "invalid."  + Consts.SPACE + "Please check the entry and " +
+                    "try again!");
+        }
 
         if (driver == null) {
             switch (browser) {

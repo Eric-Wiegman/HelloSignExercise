@@ -41,7 +41,8 @@ public class Utils {
         } else if (os.contains("solaris")) {
             os = "solaris";
         } else {
-            throw new AssertionError("Your OS is not supported");
+            throw new AssertionError("Your OS" + Consts.SPACE + Consts.QUOTE +
+                    os + Consts.QUOTE + Consts.SPACE + "is not supported");
         }
 
         return os;
@@ -60,13 +61,13 @@ public class Utils {
         try {
             browserValue = getStringFromPropFile(Consts.PROPERTY_FILE, "browser");
         } catch (IOException e) {
-            System.out.println("Cannot find property file " + Consts
-                    .PROPERTY_FILE + ", so using default " + defaultBrowser
-                    + ".");
+            System.out.println("Cannot find property file" + Consts.SPACE +
+                    Consts.QUOTE + Consts.PROPERTY_FILE +  Consts.QUOTE +
+                    ", so will try using the default browser" +  Consts.SPACE  +
+                    defaultBrowser + "." + Consts.NEWLINE);
         }
         return browserValue;
     }
-
     /**
      * Gets chrome driver executable path from property file.
      *
@@ -108,7 +109,17 @@ public class Utils {
         try {
             baseUrl = getStringFromPropFile(Consts.PROPERTY_FILE, "baseUrl");
         } catch (IOException e) {
-            throw new AssertionError("Cannot find property file, so test will fail.");
+            throw new AssertionError(Consts.NEWLINE + Consts.TAB +
+                    "Cannot find property file" + Consts.SPACE + Consts.QUOTE +
+                    Consts.PROPERTY_FILE + Consts.QUOTE + Consts.SPACE +
+                    "and thus cannot specify which URL to navigate " +
+                    "to in the browser, so test will fail." + Consts.NEWLINE
+                    + Consts.TAB + "Additionally, make sure the property file" +
+                    " can be found and the" + Consts.SPACE + Consts.QUOTE +
+                    "baseUrl" + Consts.QUOTE + Consts.SPACE + "entry has the " +
+                    "correct value."+ Consts.NEWLINE
+            );
+
         }
         return baseUrl;
     }
