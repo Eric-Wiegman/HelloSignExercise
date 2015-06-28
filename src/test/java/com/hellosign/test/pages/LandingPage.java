@@ -1,6 +1,6 @@
 package com.hellosign.test.pages;
 
-import com.hellosign.test.utils.Utils;
+import com.hellosign.test.utils.Utilities;
 import com.hellosign.test.webtestsbase.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +16,7 @@ public class LandingPage extends BasePage {
      * The constant PAGE_URL.
      */
     private static final String PAGE_URL =
-            new Utils().getBaseUrlValueFromPropertyFile();
+            new Utilities().getBaseUrlValueFromPropertyFile();
 
     /**
      * The Login link.
@@ -46,11 +46,16 @@ public class LandingPage extends BasePage {
      */
     @Override
     public final boolean isPageOpened() {
+
+        boolean bReturn;
+
         try {
-            return loginLink.isDisplayed();
+            bReturn =  loginLink.isDisplayed();
         } catch (NoSuchElementException e) {
-            return false;
+            bReturn = false;
         }
+
+        return bReturn;
     }
 
     /**

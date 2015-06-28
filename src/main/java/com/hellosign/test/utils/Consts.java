@@ -1,9 +1,9 @@
 package com.hellosign.test.utils;
 
 /**
- * The Interface Consts, where the constants are defined.
+ * The class Consts, where the constants are defined.
  */
-public abstract class Consts {
+public class Consts {
 
     /**
      * The constant PROPERTY_FILE.
@@ -23,9 +23,9 @@ public abstract class Consts {
     public static final String SPACE = " ";
 
     /**
-     * The Constant TAB -- to aid in readability.
+     * The Constant TAB_CHARACTER -- to aid in readability.
      */
-    public static final String TAB = "\t";
+    public static final String TAB_CHARACTER = "\t";
 
     /**
      * The Constant NEWLINE -- to aid in readability.

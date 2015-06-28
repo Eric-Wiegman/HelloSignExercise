@@ -125,7 +125,7 @@ Unless otherwise noted, the single test case run was parameterized using the
     │   │           │       package-frame.html
     │   │           │       package-summary.html
     │   │           │       package-tree.html
-    │   │           │       Utils.html
+    │   │           │       Utilities.html
     │   │           │
     │   │           └───webtestsbase
     │   │                   BasePage.html
@@ -164,7 +164,7 @@ Unless otherwise noted, the single test case run was parameterized using the
     │   │           └───test
     │   │               ├───utils
     │   │               │       Consts.java
-    │   │               │       Utils.java
+    │   │               │       Utilities.java
     │   │               │
     │   │               └───webtestsbase
     │   │                       BasePage.java

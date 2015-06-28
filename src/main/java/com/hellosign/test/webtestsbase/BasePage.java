@@ -1,6 +1,6 @@
 package com.hellosign.test.webtestsbase;
 
-import com.hellosign.test.utils.Utils;
+import com.hellosign.test.utils.Utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -50,8 +50,8 @@ public abstract class BasePage {
         int secondsCount = 0;
         boolean isPageOpenedIndicator = isPageOpened();
         while (!isPageOpenedIndicator
-                && secondsCount < WAIT_FOR_PAGE_LOAD_IN_SECONDS) {
-            Utils.waitForSeconds(1);
+                && WAIT_FOR_PAGE_LOAD_IN_SECONDS > secondsCount) {
+            Utilities.waitForSeconds(1);
             secondsCount++;
             isPageOpenedIndicator = isPageOpened();
         }
@@ -65,7 +65,7 @@ public abstract class BasePage {
      *
      * @return initialized in tests webdriver instance.
      */
-    protected final WebDriver getDriver() {
+    protected static WebDriver getDriver() {
         return com.hellosign.test.webtestsbase.WebDriverFactory.getDriver();
     }
 

@@ -6,9 +6,9 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * The class Utils -- general utilities.
+ * The class Utilities -- general utilities.
  */
-public class Utils {
+public class Utilities {
 
     /**
      * waiting for seconds.
@@ -111,12 +111,12 @@ public class Utils {
         try {
             baseUrl = getStringFromPropFile(Consts.PROPERTY_FILE, "baseUrl");
         } catch (IOException e) {
-            throw new AssertionError(Consts.NEWLINE + Consts.TAB
+            throw new AssertionError(Consts.NEWLINE + Consts.TAB_CHARACTER
                     + "Cannot find property file" + Consts.SPACE + Consts.QUOTE
                     + Consts.PROPERTY_FILE + Consts.QUOTE + Consts.SPACE
                     + "and thus cannot specify which URL to navigate "
                     + "to in th +e browser, so test will fail." + Consts.NEWLINE
-                    + Consts.TAB + "Additionally, make sure the property file"
+                    + Consts.TAB_CHARACTER + "Additionally, make sure the property file"
                     + " can be found and the" + Consts.SPACE + Consts.QUOTE
                     + "baseUrl" + Consts.QUOTE + Consts.SPACE + "entry has the "
                     + "correct value." + Consts.NEWLINE
@@ -132,13 +132,14 @@ public class Utils {
      * @param propFileName the property file name
      * @param propString   the property string
      * @return the value from property file
-     * @throws IOException an I/O exception
+     * @throws IOException, FileNotFoundException an I/O or file not
+     * found exception
      */
     private String getStringFromPropFile(
             final String propFileName,
             final String propString
     )
-            throws IOException {
+            throws IOException, FileNotFoundException {
 
         String propStringVal = "Error";
 
@@ -157,7 +158,7 @@ public class Utils {
      */
     private Properties getPropertiesFromClasspath(
             String propFileName
-    ) throws IOException {
+    ) throws IOException, FileNotFoundException {
         Properties props = new Properties();
         InputStream inputStream = getClass().getClassLoader()
                 .getResourceAsStream(propFileName);
@@ -183,10 +184,10 @@ public class Utils {
         String chromedriverExeLocation =
                 getChromeDriverExePathFromPropertyFile();
 
-        switch (Utils.getOS()) {
+        switch (Utilities.getOS()) {
             case "windows":
                 driverFolder = "chromedriver_win32";
-                driverExe = driverExe + ".exe";
+                driverExe += ".exe";
                 break;
             case "mac":
                 driverFolder = "chromedriver_mac32";
@@ -219,10 +220,10 @@ public class Utils {
      *
      * @return the file path separator
      */
-    private String getFilePathSeparator() {
+    private static String getFilePathSeparator() {
         String separator;
 
-        if (getOS().equals("windows")) {
+        if ("windows".equals(getOS())) {
             separator = Consts.BACKSLASH;
         } else {
             separator = Consts.SLASH;

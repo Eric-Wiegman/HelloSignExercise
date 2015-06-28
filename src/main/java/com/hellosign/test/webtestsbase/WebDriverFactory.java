@@ -1,7 +1,7 @@
 package com.hellosign.test.webtestsbase;
 
 import com.hellosign.test.utils.Consts;
-import com.hellosign.test.utils.Utils;
+import com.hellosign.test.utils.Utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -29,7 +29,7 @@ public class WebDriverFactory {
      * The constant utilities, which is an instantiation of the generic Utility
      * class.
      */
-    private static Utils utilities = new Utils();
+    private static Utilities utilities = new Utilities();
     /**
      * The constant driver.
      */

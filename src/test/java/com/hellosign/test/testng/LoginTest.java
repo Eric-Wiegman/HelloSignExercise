@@ -43,7 +43,7 @@ public class LoginTest {
      * "Invalid username/password combo."<br>
      * <br>
      *
-     * @param identifier         the identifier for the specified data-driven scenario
+     * @param identifier         identifier for specified data-driven scenario
      * @param email              the email used to log in
      * @param password           the password used to log in
      * @param expectedErrMessage the expected error message

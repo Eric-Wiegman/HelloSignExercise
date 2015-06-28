@@ -81,11 +81,15 @@ public class LoginPage extends BasePage {
      */
     @Override
     public final boolean isPageOpened() {
+        boolean bReturn;
+
         try {
-            return btnLogin.isDisplayed();
+            bReturn = btnLogin.isDisplayed();
         } catch (NoSuchElementException e) {
-            return false;
+             bReturn = false;
         }
+
+        return bReturn;
     }
 
     /**

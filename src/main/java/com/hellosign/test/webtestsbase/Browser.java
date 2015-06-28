@@ -46,12 +46,15 @@ public enum Browser {
      * @return browser object
      */
     public static Browser getByName(final String name) {
+
+        Browser browserReturn = null;
+
         for (Browser browser : values()) {
             if (browser.getBrowserName().equalsIgnoreCase(name)) {
-                return browser;
+                browserReturn = browser;
             }
         }
-        return null;
+        return browserReturn;
     }
 
     /**
