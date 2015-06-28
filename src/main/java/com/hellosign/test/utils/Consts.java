@@ -66,4 +66,10 @@ public abstract class Consts {
      * The Constant MINUTE, or 60 seconds.
      */
     public static final int MINUTE = 60;
+
+    /**
+     * The Constant ONE_THOUSAND_LONG, to use when doing long arithmetic with
+     * ints -- to avoid warnings, errors, or exceptions.
+     */
+    public static final long ONE_THOUSAND_LONG = 1000L;
 }

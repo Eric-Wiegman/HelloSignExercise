@@ -6,18 +6,18 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * The class Utils -- general utilities
+ * The class Utils -- general utilities.
  */
 public class Utils {
 
     /**
-     * waiting for seconds
+     * waiting for seconds.
      *
      * @param timeoutInSeconds timeout in seconds for wait
      */
-    public static void waitForSeconds(int timeoutInSeconds) {
+    public static void waitForSeconds(final int timeoutInSeconds) {
         try {
-            Thread.sleep(timeoutInSeconds * 1000L);
+            Thread.sleep(timeoutInSeconds * Consts.ONE_THOUSAND_LONG);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -34,15 +34,15 @@ public class Utils {
 
         if (os.contains("win")) {
             os = "windows";
-        } else if ( os.contains("mac")) {
+        } else if (os.contains("mac")) {
             os = "mac";
-        } else if ( os.contains("nix")) {
+        } else if (os.contains("nix")) {
             os = "nix";
         } else if (os.contains("solaris")) {
             os = "solaris";
         } else {
-            throw new AssertionError("Your OS" + Consts.SPACE + Consts.QUOTE +
-                    os + Consts.QUOTE + Consts.SPACE + "is not supported");
+            throw new AssertionError("Your OS" + Consts.SPACE + Consts.QUOTE
+                    + os + Consts.QUOTE + Consts.SPACE + "is not supported");
         }
 
         return os;
@@ -53,21 +53,23 @@ public class Utils {
      *
      * @return the browser value from property file
      */
-    public String getBrowserValueFromPropertyFile() {
+    public final String getBrowserValueFromPropertyFile() {
 
         String defaultBrowser = "firefox";
         String browserValue = defaultBrowser;
 
         try {
-            browserValue = getStringFromPropFile(Consts.PROPERTY_FILE, "browser");
+            browserValue = getStringFromPropFile(
+                    Consts.PROPERTY_FILE, "browser");
         } catch (IOException e) {
-            System.out.println("Cannot find property file" + Consts.SPACE +
-                    Consts.QUOTE + Consts.PROPERTY_FILE +  Consts.QUOTE +
-                    ", so will try using the default browser" +  Consts.SPACE  +
-                    defaultBrowser + "." + Consts.NEWLINE);
+            System.out.println("Cannot find property file" + Consts.SPACE
+                    + Consts.QUOTE + Consts.PROPERTY_FILE + Consts.QUOTE
+                    + ", so will try using the default browser" + Consts.SPACE
+                    + defaultBrowser + "." + Consts.NEWLINE);
         }
         return browserValue;
     }
+
     /**
      * Gets chrome driver executable path from property file.
      *
@@ -89,9 +91,9 @@ public class Utils {
             */
             if ("chrome".equals(getBrowserValueFromPropertyFile()
                     .toLowerCase())) {
-                throw new AssertionError("Can't find the chromedriver " +
-                        "Executable -- suggest changing the 'browser' config " +
-                        "value to 'firefox'");
+                throw new AssertionError("Can't find the chromedriver "
+                        + "Executable -- suggest changing the 'browser' config "
+                        + "value to 'firefox'");
             }
         }
         return chromedriverExeLocation;
@@ -102,22 +104,22 @@ public class Utils {
      *
      * @return the base URL value from property file
      */
-    public String getBaseUrlValueFromPropertyFile() {
+    public final String getBaseUrlValueFromPropertyFile() {
 
         String baseUrl = "127.0.0.1";
 
         try {
             baseUrl = getStringFromPropFile(Consts.PROPERTY_FILE, "baseUrl");
         } catch (IOException e) {
-            throw new AssertionError(Consts.NEWLINE + Consts.TAB +
-                    "Cannot find property file" + Consts.SPACE + Consts.QUOTE +
-                    Consts.PROPERTY_FILE + Consts.QUOTE + Consts.SPACE +
-                    "and thus cannot specify which URL to navigate " +
-                    "to in the browser, so test will fail." + Consts.NEWLINE
-                    + Consts.TAB + "Additionally, make sure the property file" +
-                    " can be found and the" + Consts.SPACE + Consts.QUOTE +
-                    "baseUrl" + Consts.QUOTE + Consts.SPACE + "entry has the " +
-                    "correct value."+ Consts.NEWLINE
+            throw new AssertionError(Consts.NEWLINE + Consts.TAB
+                    + "Cannot find property file" + Consts.SPACE + Consts.QUOTE
+                    + Consts.PROPERTY_FILE + Consts.QUOTE + Consts.SPACE
+                    + "and thus cannot specify which URL to navigate "
+                    + "to in th +e browser, so test will fail." + Consts.NEWLINE
+                    + Consts.TAB + "Additionally, make sure the property file"
+                    + " can be found and the" + Consts.SPACE + Consts.QUOTE
+                    + "baseUrl" + Consts.QUOTE + Consts.SPACE + "entry has the "
+                    + "correct value." + Consts.NEWLINE
             );
 
         }
@@ -128,13 +130,13 @@ public class Utils {
      * Gets string value from the property file.
      *
      * @param propFileName the property file name
-     * @param propString the property string
+     * @param propString   the property string
      * @return the value from property file
      * @throws IOException an I/O exception
      */
     private String getStringFromPropFile(
-            String propFileName,
-            String propString
+            final String propFileName,
+            final String propString
     )
             throws IOException {
 
@@ -173,12 +175,13 @@ public class Utils {
     /**
      * Sets chromeDriver property.
      */
-    public void setChromeDriverProperty() {
+    public final void setChromeDriverProperty() {
 
         String driverFolder;
         String driverExe = "chromedriver";
 
-        String chromedriverExeLocation = getChromeDriverExePathFromPropertyFile();
+        String chromedriverExeLocation =
+                getChromeDriverExePathFromPropertyFile();
 
         switch (Utils.getOS()) {
             case "windows":
@@ -193,22 +196,22 @@ public class Utils {
                 driverFolder = "chromedriver_linux32";
                 break;
             case "solaris":
-                throw new AssertionError("Solaris is not supported for " +
-                        "ChromeDriver Executable");
+                throw new AssertionError("Solaris is not supported for "
+                        + "ChromeDriver Executable");
             default:
-                throw new AssertionError("Your OS is not supported for " +
-                        "ChromeDriver Executable");
+                throw new AssertionError("Your OS is not supported for "
+                        + "ChromeDriver Executable");
         }
 
         System.setProperty(
                 "webdriver.chrome.driver",
-                System.getProperty("user.dir") +
-                        getFilePathSeparator() +
-                        chromedriverExeLocation +
-                        getFilePathSeparator() +
-                        driverFolder +
-                        getFilePathSeparator() +
-                        driverExe);
+                System.getProperty("user.dir")
+                        + getFilePathSeparator()
+                        + chromedriverExeLocation
+                        + getFilePathSeparator()
+                        + driverFolder
+                        + getFilePathSeparator()
+                        + driverExe);
     }
 
     /**
@@ -217,12 +220,12 @@ public class Utils {
      * @return the file path separator
      */
     private String getFilePathSeparator() {
-        String separator = Consts.SLASH;
+        String separator;
 
         if (getOS().equals("windows")) {
             separator = Consts.BACKSLASH;
         } else {
-            //all else uses the (already initialized) default forward slash
+            separator = Consts.SLASH;
         }
 
         return separator;

@@ -17,7 +17,7 @@ public class LoginTest {
      * Before test routine -- launches the browser.
      */
     @BeforeTest
-    public void beforeTest() {
+    public final void beforeTest() {
         WebDriverFactory.startBrowser();
     }
 
@@ -30,7 +30,8 @@ public class LoginTest {
      * enter "notanemail" in the email address field<br>
      * enter "notapassword" in the password field<br>
      * click "SIGN IN".<br>
-     * You should verify that the following error is displayed: "Invalid email address"<br>
+     * You should verify that the following error is displayed:
+     * "Invalid email address"<br>
      * <br><br>
      * TEST 2:<br>
      * Go to www.hellosign.com<br>
@@ -38,20 +39,24 @@ public class LoginTest {
      * enter "email@example.com" in the email address field<br>
      * enter "wrongpass" in the password field<br>
      * click "SIGN IN".<br>
-     * You should verify that the following error is displayed: "Invalid username/password combo."<br>
+     * You should verify that the following error is displayed:
+     * "Invalid username/password combo."<br>
      * <br>
      *
-     * @param identifier the identifier for the specified data-driven scenario
-     * @param email the email used to log in
-     * @param password the password used to log in
+     * @param identifier         the identifier for the specified data-driven scenario
+     * @param email              the email used to log in
+     * @param password           the password used to log in
      * @param expectedErrMessage the expected error message
      */
-    @Test(dataProvider = "loginDataProvider", dataProviderClass = LoginDataProvider.class)
-    public void testLogin(
-            String identifier,
-            String email,
-            String password,
-            String expectedErrMessage) {
+    @Test(
+            dataProvider = "helloSignLoginDataProvider",
+            dataProviderClass = LoginDataProvider.class
+    )
+    public final void testLogin(
+            final String identifier,
+            final String email,
+            final String password,
+            final String expectedErrMessage) {
 
         LandingPage landingPage = new LandingPage();
         landingPage.signIn();
@@ -69,10 +74,10 @@ public class LoginTest {
     }
 
     /**
-     * After test, where we quit the browser
+     * After test, where we quit the browser.
      */
     @AfterTest
-    public void afterTest() {
+    public final void afterTest() {
         WebDriverFactory.finishBrowser();
     }
 }

@@ -2,8 +2,9 @@ package com.hellosign.test.webtestsbase;
 
 /**
  * Created by Sidelnikov Mikhail on 17.09.14.
- * This class represents browsers. For add support of your browser - add it to this enum
- *  <br>
+ * This class represents browsers. For add support of your browser -
+ * add it to this enum
+ * <br>
  * Modified by Eric Wiegman on 26.06.15.
  * Minor changes in javadoc only
  */
@@ -32,19 +33,19 @@ public enum Browser {
     /**
      * Instantiates a new Browser.
      *
-     * @param browserName the browser name
+     * @param browserNameParam the browser name
      */
-    Browser(String browserName) {
-        this.browserName = browserName;
+    Browser(final String browserNameParam) {
+        this.browserName = browserNameParam;
     }
 
     /**
-     * returns browser object by name
+     * returns browser object by name.
      *
      * @param name name of browser
      * @return browser object
      */
-    public static Browser getByName(String name) {
+    public static Browser getByName(final String name) {
         for (Browser browser : values()) {
             if (browser.getBrowserName().equalsIgnoreCase(name)) {
                 return browser;

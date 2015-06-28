@@ -13,7 +13,7 @@ public class LoginDataProvider {
      * @return the object[][], which represents the data to be used in the Test.
      */
     @DataProvider
-    public static Object[][] loginDataProvider() {
+    public static Object[][] helloSignLoginDataProvider() {
         return new Object[][]{
                 /*
                 String ID, String email, String password,

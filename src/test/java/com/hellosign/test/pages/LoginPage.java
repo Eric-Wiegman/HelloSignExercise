@@ -80,7 +80,7 @@ public class LoginPage extends BasePage {
      * @return the boolean
      */
     @Override
-    public boolean isPageOpened() {
+    public final boolean isPageOpened() {
         try {
             return btnLogin.isDisplayed();
         } catch (NoSuchElementException e) {
@@ -91,11 +91,11 @@ public class LoginPage extends BasePage {
     /**
      * Login method.
      *
-     * @param email the username (email, actually) used when logging in
+     * @param email    the username (email, actually) used when logging in
      * @param password the password used when logging in
      * @return the string
      */
-    public String login(String email, String password) {
+    public final String login(final String email, final String password) {
 
         String errMsg = "No error message reported";
 
@@ -107,8 +107,8 @@ public class LoginPage extends BasePage {
 
         WebDriverWait wait = new WebDriverWait(wd, Consts.QUARTER_MINUTE);
         WebElement wErrorMsgShows = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.className
-                        (INLINE_ERR_CLASSNAME)));
+                ExpectedConditions.visibilityOfElementLocated(By.className(
+                        INLINE_ERR_CLASSNAME)));
 
         if (wErrorMsgShows != null) {
             errMsg = wErrorMsgShows.getText();
@@ -118,4 +118,3 @@ public class LoginPage extends BasePage {
     }
 
 }
-

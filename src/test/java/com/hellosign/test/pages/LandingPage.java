@@ -35,7 +35,7 @@ public class LandingPage extends BasePage {
      * Open page.
      */
     @Override
-    protected void openPage() {
+    protected final void openPage() {
         getDriver().get(PAGE_URL);
     }
 
@@ -45,7 +45,7 @@ public class LandingPage extends BasePage {
      * @return the boolean result
      */
     @Override
-    public boolean isPageOpened() {
+    public final boolean isPageOpened() {
         try {
             return loginLink.isDisplayed();
         } catch (NoSuchElementException e) {
@@ -56,8 +56,9 @@ public class LandingPage extends BasePage {
     /**
      * Sign in.
      */
-    public void signIn() {
+    public final void signIn() {
         loginLink.click();
     }
 
 }
+

@@ -22,38 +22,39 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverFactory {
 
     /**
-     * The constant utils, which is an instantiation of the generic Utility
-     * class.
-     */
-    private static final Utils utils = new Utils();
-
-    /**
      * The constant IMPLICIT_WAIT_TIMEOUT.
      */
     private static final long IMPLICIT_WAIT_TIMEOUT = 5;
     /**
+     * The constant utilities, which is an instantiation of the generic Utility
+     * class.
+     */
+    private static Utils utilities = new Utils();
+    /**
      * The constant driver.
      */
-    private volatile static WebDriver driver;
+    private static volatile WebDriver driver;
 
     /**
      * Getting of pre-configured {@link WebDriver} instance.
      * Please use this method only after calling {@link #startBrowser()
      * startBrowser}** method
      *
-     * @return webdriver object, or throw IllegalStateException, if driver has not been initialized
+     * @return webdriver object, or throw IllegalStateException,
+     * if driver has not been initialized
      */
     public static WebDriver getDriver() {
         if (driver != null) {
             return driver;
         } else {
-            throw new IllegalStateException("Driver has not been initialized. " +
-                    "Please call WebDriverFactory.startBrowser() before use this method");
+            throw new IllegalStateException("Driver has not been initialized. "
+                    + "Please call WebDriverFactory.startBrowser() before using"
+                    + " this method");
         }
     }
 
     /**
-     * Finishes browser
+     * Finishes browser.
      */
     public static void finishBrowser() {
         if (driver != null) {
@@ -68,19 +69,19 @@ public class WebDriverFactory {
     public static void startBrowser() {
 
 
-        String sBrowser = utils.getBrowserValueFromPropertyFile();
+        String sBrowser = utilities.getBrowserValueFromPropertyFile();
 
 
         Browser browser = null;
         try {
             browser = Browser.valueOf(sBrowser.trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("The browser:" + Consts.SPACE +
-                    Consts.QUOTE + sBrowser + Consts.QUOTE  + Consts.SPACE +
-                    "specified in the property file"  + Consts.SPACE + Consts.QUOTE +
-                    Consts.PROPERTY_FILE + Consts.QUOTE + Consts.SPACE +"is " +
-                    "invalid."  + Consts.SPACE + "Please check the entry and " +
-                    "try again!");
+            throw new IllegalArgumentException("The browser:" + Consts.SPACE
+                    + Consts.QUOTE + sBrowser + Consts.QUOTE + Consts.SPACE
+                    + "specified in the property file" + Consts.SPACE
+                    + Consts.QUOTE + Consts.PROPERTY_FILE + Consts.QUOTE
+                    + Consts.SPACE + "is invalid." + Consts.SPACE
+                    + "Please check the entry and try again!");
         }
 
         if (driver == null) {
@@ -89,7 +90,7 @@ public class WebDriverFactory {
                     driver = new FirefoxDriver();
                     break;
                 case CHROME:
-                    utils.setChromeDriverProperty();
+                    utilities.setChromeDriverProperty();
                     driver = new ChromeDriver();
                     break;
                 case IE10:
@@ -102,13 +103,12 @@ public class WebDriverFactory {
                     throw new IllegalStateException("Unsupported browser type");
 
             }
-            driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIMEOUT, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(
+                    IMPLICIT_WAIT_TIMEOUT, TimeUnit.SECONDS);
         } else {
-            throw new IllegalStateException("Driver has already been initialized. " +
-                    "Quit it before using this method");
+            throw new IllegalStateException("Driver's already been initialized."
+                    + Consts.SPACE + "Quit it before using this method");
         }
-
     }
-
-
 }
+
